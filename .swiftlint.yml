@@ -1,0 +1,6 @@
+line_length: 240
+identifier_name:
+  excluded:
+    - id
+vertical_whitespace:
+  max_empty_lines: 2
