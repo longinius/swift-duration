@@ -115,7 +115,7 @@ public class Duration: Codable, Equatable {
 
     // MARK: - Initializer
 
-    /// Initializes a `Duration` object, optionally specifying values for its fields.
+    /// Creates a new duration, optionally specifying values for its fields.
     public init(
         year: Int? = nil,
         month: Int? = nil,
@@ -136,7 +136,7 @@ public class Duration: Codable, Equatable {
         self.millisecond = millisecond
     }
 
-    /// Create a `Duration` object from a duration dictionary.
+    /// Creates a new duration from a duration dictionary.
     /// - Parameter duration: Duration dictionary.
     public init(fromDictionary duration: DurationDictionary) {
         self.year = duration[.year]
@@ -149,12 +149,16 @@ public class Duration: Codable, Equatable {
         self.millisecond = duration[.millisecond]
     }
 
-    /// Create a `Duration` object from an ISO 8601 duration string.
+    /// Creates a duration from an ISO 8601 string.
     /// - Parameter string: ISO 8601 duration string.
+    /// - Throws: This function throws an error if the given string can't be parsed as a valid ISO 8601 string.
     public convenience init(fromISO string: String) throws {
         self.init(fromDictionary: try Parser.extractISODuration(from: string))
     }
 
+    /// Creates a new duration by decoding from the given decoder.
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: This function throws an error if the value is invalid for the given encoder’s format.
     public required convenience init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let value = try container.decode(String.self)
@@ -164,12 +168,17 @@ public class Duration: Codable, Equatable {
 
     // MARK: - Public Methods
 
+    /// Encodes the elements of this duration into the given encoder in an single value container.
+    /// - Parameter encoder: The encoder to write data to.
+    /// - Throws: This function throws an error if the value is invalid for the given encoder’s format.
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(iso8601)
     }
 
     /// Returns the value of one of the properties, using an enumeration value instead of a property name.
+    /// - Parameter component: Component of duration.
+    /// - Returns: Value for the specified component.
     public func value(for component: Component) -> Int? {
         switch component {
         case .year:
@@ -192,6 +201,9 @@ public class Duration: Codable, Equatable {
     }
 
     /// Set the value of one of the properties, using an enumeration value instead of a property name.
+    /// - Parameters:
+    ///   - value: The new value for the specified component.
+    ///   - component: Component of duration
     public func setValue(_ value: Int, for component: Component) {
         switch component {
         case .year:
