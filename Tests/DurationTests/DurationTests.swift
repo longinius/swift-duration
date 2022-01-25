@@ -104,7 +104,7 @@ final class DurationTests: XCTestCase {
     }
 
     func testInvertedDuration() {
-        let duration = Duration(year: 1, month: 2, week: 3, day: 4, hour: 5, minute: 6, second: 7, millisecond: 8).inverted
+        let duration = Duration(year: 1, month: 2, week: 3, day: 4, hour: 5, minute: 6, second: 7, millisecond: 8).inverted()
         let inverted = Duration(year: -1, month: -2, week: -3, day: -4, hour: -5, minute: -6, second: -7, millisecond: -8)
         XCTAssertEqual(duration, inverted)
     }

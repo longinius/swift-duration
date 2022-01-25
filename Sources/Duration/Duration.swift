@@ -64,21 +64,6 @@ public class Duration: Codable, Equatable {
         )
     }
 
-    /// Creates a new `Duration` object with inverted values.
-    /// - Returns: `Duration` object with inverted values.
-    public var inverted: Duration {
-        return Duration(
-            year: invertOptional(value: year),
-            month: invertOptional(value: month),
-            week: invertOptional(value: week),
-            day: invertOptional(value: day),
-            hour: invertOptional(value: hour),
-            minute: invertOptional(value: minute),
-            second: invertOptional(value: second),
-            millisecond: invertOptional(value: millisecond)
-        )
-    }
-
     /// ISO 8601 string representation of duration
     public var iso8601: String {
         var isoDuration: String = "P"
@@ -174,6 +159,21 @@ public class Duration: Codable, Equatable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(iso8601)
+    }
+
+    /// Creates a new `Duration` object with inverted values.
+    /// - Returns: `Duration` object with inverted values.
+    public func inverted() -> Duration {
+        return Duration(
+            year: invertOptional(value: year),
+            month: invertOptional(value: month),
+            week: invertOptional(value: week),
+            day: invertOptional(value: day),
+            hour: invertOptional(value: hour),
+            minute: invertOptional(value: minute),
+            second: invertOptional(value: second),
+            millisecond: invertOptional(value: millisecond)
+        )
     }
 
     /// Returns the value of one of the properties, using an enumeration value instead of a property name.
