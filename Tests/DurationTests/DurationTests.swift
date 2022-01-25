@@ -108,4 +108,26 @@ final class DurationTests: XCTestCase {
         let inverted = Duration(year: -1, month: -2, week: -3, day: -4, hour: -5, minute: -6, second: -7, millisecond: -8)
         XCTAssertEqual(duration, inverted)
     }
+
+    func testValueForAndSetValue() {
+        let duration = Duration()
+
+        duration.setValue(1, for: .year)
+        duration.setValue(2, for: .month)
+        duration.setValue(3, for: .week)
+        duration.setValue(4, for: .day)
+        duration.setValue(5, for: .hour)
+        duration.setValue(6, for: .minute)
+        duration.setValue(7, for: .second)
+        duration.setValue(8, for: .millisecond)
+
+        XCTAssertEqual(duration.value(for: .year), 1)
+        XCTAssertEqual(duration.value(for: .month), 2)
+        XCTAssertEqual(duration.value(for: .week), 3)
+        XCTAssertEqual(duration.value(for: .day), 4)
+        XCTAssertEqual(duration.value(for: .hour), 5)
+        XCTAssertEqual(duration.value(for: .minute), 6)
+        XCTAssertEqual(duration.value(for: .second), 7)
+        XCTAssertEqual(duration.value(for: .millisecond), 8)
+    }
 }
