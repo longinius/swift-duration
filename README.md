@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-orange?style=flat&color=F05138)
 ![](https://img.shields.io/badge/Platform-iOS%20macOS%20tvOS%20watchOS-green?style=flat)
 
-An ISO 8601 Duration parser for Swift. Inspired by the [Luxon](https://moment.github.io/luxon) duration object.
+An ISO 8601 Duration parser for Swift. Inspired by the [Luxon](https://moment.github.io/luxon) [Duration](https://moment.github.io/luxon/#/tour?id=durations) object.
 
 
 ## Features
@@ -43,6 +43,6 @@ The [Swift Package Manager](https://www.swift.org/package-manager/) is a tool fo
 To use `Duration` in your project, simply add this Package as dependency:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/longinius/duration.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/longinius/swift-duration.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
