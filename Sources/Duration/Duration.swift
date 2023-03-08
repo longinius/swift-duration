@@ -36,21 +36,21 @@ public class Duration: Codable, Equatable {
     /// - Returns: `DateComponents` with values of the `Duration`.
     public var dateComponents: DateComponents {
         var daysWithWeeks: Int?
-        if let weeks = week {
+        if let week {
             // ISO 8601 specifies a week as seven days
-            daysWithWeeks = weeks * 7
+            daysWithWeeks = week * 7
         }
-        if let days = day {
+        if let day {
             if daysWithWeeks != nil {
-                daysWithWeeks! += days
+                daysWithWeeks! += day
             } else {
-                daysWithWeeks = days
+                daysWithWeeks = day
             }
         }
 
         var nanoseconds: Int?
-        if let milliseconds = millisecond {
-            nanoseconds = milliseconds * 1_000_000
+        if let millisecond {
+            nanoseconds = millisecond * 1_000_000
         }
 
         return DateComponents(
@@ -68,18 +68,18 @@ public class Duration: Codable, Equatable {
     public var iso8601: String {
         var isoDuration: String = "P"
 
-        if let year = year { isoDuration += "\(year)Y" }
-        if let month = month { isoDuration += "\(month)M" }
-        if let week = week { isoDuration += "\(week)W" }
-        if let day = day { isoDuration += "\(day)D" }
+        if let year { isoDuration += "\(year)Y" }
+        if let month { isoDuration += "\(month)M" }
+        if let week { isoDuration += "\(week)W" }
+        if let day { isoDuration += "\(day)D" }
 
         if hour != nil || minute != nil || second != nil || millisecond != nil {
             isoDuration += "T"
         }
 
         var timeComponents: String = ""
-        if let hour = hour { timeComponents += "\(hour)H" }
-        if let minute = minute { timeComponents += "\(minute)M" }
+        if let hour { timeComponents += "\(hour)H" }
+        if let minute { timeComponents += "\(minute)M" }
 
         let seconds = round(Double(second ?? 0) * 1000.0 + Double(millisecond ?? 0)) / 1000.0
         if seconds != 0 {
