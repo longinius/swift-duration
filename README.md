@@ -1,6 +1,6 @@
 # Swift ISO 8601 Duration
 
-![](https://img.shields.io/badge/Swift-5.7-orange?style=flat&color=F05138)
+![](https://img.shields.io/badge/Swift-5.9-orange?style=flat&color=F05138)
 ![](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-orange?style=flat&color=F05138)
 ![](https://img.shields.io/badge/Platform-iOS%20macOS%20tvOS%20watchOS-green?style=flat)
 
