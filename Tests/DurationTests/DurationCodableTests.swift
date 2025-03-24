@@ -5,12 +5,12 @@
 //  Created by Lars on 23.01.22.
 //
 
-import XCTest
+import Foundation
+import Testing
 @testable import Duration
 
-class DurationCodableTests: XCTestCase {
-
-    func testCodable() throws {
+struct DurationCodableTests {
+    @Test func codable() throws {
         let duration = try Duration(fromISO: "P1Y2M3DT4H5M6S")
 
         let encoder = JSONEncoder()
@@ -19,7 +19,6 @@ class DurationCodableTests: XCTestCase {
         let data = try encoder.encode(duration)
         let decodedDuration = try decoder.decode(Duration.self, from: data)
 
-        XCTAssertEqual(duration, decodedDuration)
+        #expect(duration == decodedDuration)
     }
-
 }
