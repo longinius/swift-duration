@@ -27,6 +27,11 @@ struct DurationTests {
         }
     }
 
+    @Test func canHandleZeroDuration() {
+        let testCase = Duration(second: 0)
+        #expect(testCase.iso8601 == "PT0S")
+    }
+
     @Test func canParseNegativeAndMixedISODuration() {
         let testCases: [String: Duration] = [
             "-P5Y2M": Duration(year: -5, month: -2),

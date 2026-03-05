@@ -92,6 +92,8 @@ public class Duration: Codable, Equatable {
 
         if isoDuration == "P" {
             isoDuration += "T0S"
+        } else if isoDuration == "PT" {
+            isoDuration += "0S"
         }
 
         return isoDuration
