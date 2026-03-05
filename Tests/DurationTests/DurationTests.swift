@@ -19,7 +19,7 @@ struct DurationTests {
             "PT7M3600S": Duration(minute: 7, second: 3600),
             "PT1000000000000000000.999S": Duration(second: 1000000000000000000, millisecond: 999000),
         ]
-        
+
         for (input, expected) in testCases {
             #expect(throws: Never.self) {
                 try Duration(fromISO: input) == expected
@@ -58,7 +58,7 @@ struct DurationTests {
             "-PT-1.5S": Duration(second: 1, millisecond: 500),
             "P-2W": Duration(week: -2),
         ]
-        
+
         for (input, expected) in testCases {
             #expect(throws: Never.self) {
                 try Duration(fromISO: input) == expected
@@ -72,9 +72,9 @@ struct DurationTests {
             "PT1blob",
             "P3Y54S",
             "3Y",
-            "T54S"
+            "T54S",
         ]
-        
+
         for input in testCases {
             #expect(throws: DurationError.parsingError) {
                 try Duration(fromISO: input)
@@ -89,17 +89,23 @@ struct DurationTests {
     }
 
     @Test func testISO8601String() {
-        let testCases: [String] = [
-            "P5Y2M",
-            "P2M7W",
-            "P4W1DT12H54M",
-            "PT7M3600S",
-            "PT0.5S"
+        let testCases: [String: String] = [
+            "P5Y2M": "P5Y2M",
+            "P5Y2M0D": "P5Y2M",
+            "P2M7W": "P2M7W",
+            "P4W1DT12H54M": "P4W1DT12H54M",
+            "P4W1DT12H54M0S": "P4W1DT12H54M",
+            "PT7M3600S": "PT7M3600S",
+            "PT0.5S": "PT0.5S",
+            "PT0H0M0S": "PT0S",
+            "P0Y0M0DT0H0M0S": "PT0S",
+            "PT0S": "PT0S",
         ]
-        
-        for input in testCases {
+
+        for (input, expected) in testCases {
             #expect(throws: Never.self) {
-                try Duration(fromISO: input).iso8601 == input
+                let output = try Duration(fromISO: input).iso8601
+                #expect(output == expected)
             }
         }
     }
