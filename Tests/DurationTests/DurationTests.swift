@@ -27,6 +27,24 @@ struct DurationTests {
         }
     }
 
+    @Test func canHandleZeroDurationsToISO() {
+        let testCases: [Duration] = [
+            Duration(year: 0),
+            Duration(month: 0),
+            Duration(week: 0),
+            Duration(day: 0),
+            Duration(hour: 0),
+            Duration(minute: 0),
+            Duration(second: 0),
+            Duration(millisecond: 0),
+            Duration(),
+        ]
+
+        for input in testCases {
+            #expect(input.iso8601 == "PT0S")
+        }
+    }
+
     @Test func canParseNegativeAndMixedISODuration() {
         let testCases: [String: Duration] = [
             "-P5Y2M": Duration(year: -5, month: -2),
@@ -84,7 +102,6 @@ struct DurationTests {
                 try Duration(fromISO: input).iso8601 == input
             }
         }
-        #expect((Duration()).iso8601 == "PT0S")
     }
 
     @Test func testInvertedDuration() {

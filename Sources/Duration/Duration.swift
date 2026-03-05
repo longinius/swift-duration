@@ -68,18 +68,14 @@ public class Duration: Codable, Equatable {
     public var iso8601: String {
         var isoDuration: String = "P"
 
-        if let year { isoDuration += "\(year)Y" }
-        if let month { isoDuration += "\(month)M" }
-        if let week { isoDuration += "\(week)W" }
-        if let day { isoDuration += "\(day)D" }
-
-        if hour != nil || minute != nil || second != nil || millisecond != nil {
-            isoDuration += "T"
-        }
+        if let year, year != 0 { isoDuration += "\(year)Y" }
+        if let month, month != 0 { isoDuration += "\(month)M" }
+        if let week, week != 0 { isoDuration += "\(week)W" }
+        if let day, day != 0 { isoDuration += "\(day)D" }
 
         var timeComponents: String = ""
-        if let hour { timeComponents += "\(hour)H" }
-        if let minute { timeComponents += "\(minute)M" }
+        if let hour, hour != 0 { timeComponents += "\(hour)H" }
+        if let minute, minute != 0 { timeComponents += "\(minute)M" }
 
         let seconds = round(Double(second ?? 0) * 1000.0 + Double(millisecond ?? 0)) / 1000.0
         if seconds != 0 {
@@ -87,7 +83,7 @@ public class Duration: Codable, Equatable {
         }
 
         if !timeComponents.isEmpty {
-            isoDuration += "\(timeComponents)"
+            isoDuration += "T\(timeComponents)"
         }
 
         if isoDuration == "P" {
