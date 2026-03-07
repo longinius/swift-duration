@@ -1,8 +1,8 @@
 # Swift ISO 8601 Duration
 
-![](https://img.shields.io/badge/Swift-5.9-orange?style=flat&color=F05138)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flonginius%2Fswift-duration%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/longinius/swift-duration)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flonginius%2Fswift-duration%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/longinius/swift-duration)
 ![](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-orange?style=flat&color=F05138)
-![](https://img.shields.io/badge/Platform-iOS%20macOS%20tvOS%20watchOS-green?style=flat)
 
 An ISO 8601 Duration parser for Swift. Inspired by the [Luxon](https://moment.github.io/luxon) [Duration](https://moment.github.io/luxon/#/tour?id=durations) object.
 
